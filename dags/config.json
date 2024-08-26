@@ -1,44 +1,47 @@
 {
     "tables": [
       {
-        "name": "table1",
-        "alias": "t1",
+        "name": "cases_cities",
+        "alias": "cities",
         "filters": [
           {
-            "column": "status",
+            "column": "state",
             "operator": "=",
-            "value": "active"
+            "value": "BA"
           },
           {
-            "column": "created_at",
-            "operator": ">",
-            "value": "2024-01-01"
+            "column": "date",
+            "operator": ">=",
+            "value": "2021-01-01"
+          },
+          {
+            "query": "city = 'Salvador/BA'"
           }
         ],
         "validations": [
           {
             "type": "record_count",
-            "expected_count": 800
+            "expected_count": 365
           },
           {
             "type": "column_count",
-            "expected_count": 5
+            "expected_count": 12
           },
           {
             "type": "not_null",
-            "columns": ["col1", "col2"]
+            "columns": ["date", "ibgeID"]
           },
           {
             "type": "regex",
-            "column": "email",
-            "pattern": "^[\\w\\.]+@[a-zA-Z_]+?\\.[a-zA-Z]{2,3}$"
+            "column": "city",
+            "pattern": ".*\/BA$"
           },
           {
             "type": "value_count",
-            "column": "status",
+            "column": "statee",
             "expected_count": {
-              "active": 600,
-              "inactive": 200
+              "BA": 152570,
+              "SP": 235790
             }
           }
         ]
