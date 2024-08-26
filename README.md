@@ -22,7 +22,7 @@ Repositório com scripts PySpark para verificação e validação de dados a par
 
 Existem duas formas de definir regras de filtros para os dados. Por meio da definição de uma query personalizada **OU** por meio da definição de parâmetros com os nomes das colunas, operador e valor a ser filtrado. 
 
-Abaixo segue um exemplo de filtro utilizando query, desse modo quaisquer outras chaves indicando nome da coluna ou operador serão ignoradas:
+1. Abaixo segue um exemplo de filtro utilizando query, desse modo quaisquer outras chaves indicando nome da coluna ou operador serão ignoradas (a menos que estejam em outro contexto de condição e não no mesmo escopo `{...}`):
 
 ```python
 {
@@ -37,6 +37,7 @@ Abaixo segue um exemplo de filtro utilizando query, desse modo quaisquer outras 
 }
 ```
 
+2. Abaixo segue um exemplo utilizando operadores para definir as regras de filtro que deverão ser aplicadas. Ambas as formas podem ser combinadas para múltiplas validações:
 ```python
 {
     ...
@@ -50,6 +51,9 @@ Abaixo segue um exemplo de filtro utilizando query, desse modo quaisquer outras 
             "column": "COLUMN_NAME_B",
             "operator": ">",
             "value": "2024-01-01"
+        },
+        {
+            "query": "COLUMN_NAME_C = 'OK'",
         }
     ],
     ...
@@ -59,3 +63,9 @@ Abaixo segue um exemplo de filtro utilizando query, desse modo quaisquer outras 
 > OBS: Se a chave `query` for inserida no contexto de uma regra de filtro, as demais chaves `column`, `operator` e `value` serão ignoradas
 
 ### Estrutura detalhada com exemplo da chave `validations`
+
+### Estrutura detalhada da chave `joins`
+
+### Estrutura detalhada da chave `aggregations`
+
+### Estrutura detalhada da chave `aggregations_with_joins`
